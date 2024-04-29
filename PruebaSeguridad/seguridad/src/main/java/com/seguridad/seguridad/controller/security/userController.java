@@ -45,6 +45,7 @@ public class userController {
         var Usuario = usuarioService.findOne(id).get();
         if (Usuario != null) {
 
+            
             Usuario.setPrimerNombre(UsuarioUpdate.getPrimerNombre());
             Usuario.setPrimerApellido(UsuarioUpdate.getPrimerApellido());
             Usuario.setCorreoElectronicoUnico(UsuarioUpdate.getCorreoElectronicoUnico());
@@ -52,6 +53,7 @@ public class userController {
             Usuario.setConfirmarContrasena(UsuarioUpdate.getConfirmarContrasena());
             Usuario.setTelefono(UsuarioUpdate.getTelefono());
             Usuario.setRol(UsuarioUpdate.getRol());
+            Usuario.setEstado(UsuarioUpdate.getEstado());
            
           
             usuarioService.save(Usuario);
