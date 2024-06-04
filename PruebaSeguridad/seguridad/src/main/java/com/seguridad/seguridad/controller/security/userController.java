@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,29 +17,23 @@ import com.seguridad.seguridad.models.Usuario;
 @RequestMapping("/api/v1/public/usuario/")
 @RestController
 public class userController {
+    
     @Autowired
     private IusuarioService usuarioService;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> save (@ModelAttribute("Usuario") Usuario Usuario) {
-        
-        usuarioService.save(Usuario);
-        return new ResponseEntity<>(Usuario, HttpStatus.OK);
-    }
-
-     @GetMapping("/")
+    @GetMapping("/")
     public ResponseEntity<Object> findAll() {
         var listaUsuario = usuarioService.findAll();
         return new ResponseEntity<>(listaUsuario, HttpStatus.OK);
     }
 
-     @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable String id) {
     usuarioService.delete(id);
     return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
     }
 
-     @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("Usuario") Usuario UsuarioUpdate) {
         var Usuario = usuarioService.findOne(id).get();
         if (Usuario != null) {
