@@ -14,6 +14,8 @@ public interface IusuarioService {
     // se define el metodo del login
     public authResponse login(loginRequest request);
 
+    public List<Usuario> traerUsuario(String traerUser);
+
     public List<Usuario> findAll();
 
     public Optional<Usuario> findOne(String id);
